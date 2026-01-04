@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>🤍 الحب </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(#5a1f2e, #7b2d42);
+    text-align: center;
+    overflow-x: hidden;
+    color: #3a0f1f;
+}
+
+/* صفحة الدخول */
+.login {
+    margin-top: 150px;
+    color: #fff;
+}
+
+.login input {
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    width: 220px;
+    margin-top: 10px;
+}
+
+/* زرار */
+button {
+    background-color: #7b2d42;
+    border: none;
+    padding: 10px 22px;
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #5a1f2e;
+}
+
+/* القلوب */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 18px;
+    animation: floatUp linear infinite;
+    color: rgba(255,255,255,0.6);
+}
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
+/* المحتوى */
+.container {
+    display: none;
+    padding: 30px 0;
+}
+
+/* بوكس العنوان */
+.title-box {
+    display: inline-block;
+    background: #f6e6eb;
+    padding: 12px 35px;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    margin-bottom: 15px;
+    animation: zoomIn 1.2s ease;
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* تحكم الموسيقى */
+.music-controls {
+    margin-bottom: 30px;
+}
+.music-controls button {
+    margin: 0 10px;
+}
+
+/* الذكريات */
+.memory {
+    margin: 30px auto;
+    width: 80%;
+}
+.memory img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transition: transform 0.3s;
+}
+.memory img:hover {
+    transform: scale(1.05);
+}
+.memory p {
+    margin-top: 10px;
+    color: #3a0f1f;
+}
+
+/* العداد */
+.counter-box {
+    background: #f6e6eb;
+    width: 85%;
+    max-width: 420px;
+    margin: 40px auto 25px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.counter {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+.counter div {
+    background: #7b2d42;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 15px;
+    min-width: 70px;
+}
+.counter span {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* رسالة النهاية */
+.message-box {
+    background: #f6e6eb;
+    width: 85%;
+    max-width: 420px;
+    margin: 30px auto 50px;
+    padding: 22px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- صفحة الدخول -->
+<div class="login" id="login">
+    <h2>🔐 الرمز السري</h2>
+    <p> 🤍قبل ماتفتحه نحب نقولك انك عوض السنين ليا 🤍</p>
+    <input type="password" id="password" placeholder="الرمز">
+    <br><br>
+    <button style="border-radius:25px;" onclick="checkPassword()">دخول</button>
+</div>
+
+<!-- المحتوى -->
+<div class="container" id="content">
+
+    <div class="title-box">
+        <h2>🤍 ذكرياتنا 🤍</h2>
+    </div>
+
+    <div class="music-controls">
+        <button onclick="rewind()"><i class="fa-solid fa-backward"></i></button>
+        <button onclick="toggleMusic()"><i class="fa-solid fa-play"></i></button>
+        <button onclick="forward()"><i class="fa-solid fa-forward"></i></button>
+    </div>
+
+    <div class="memory">
+        <img src="photo1.jpg">
+        <p>🤍 والموفؤن بعهدهم اذا عاهدوا</p>
+    </div>
+
+    <div class="memory">
+        <img src="photo2.jpg">
+        <p>🤍 تفاصيل صغيرة بس غالية عندي لانها معاك </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo3.jpg">
+        <p>🤍 كانت اول طلعة لينا واني حلالك </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo4.jpg">
+        <p>🤍 اهني لما مكنتش تبي نديرو ماتشي بس لما درناه عجبك </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo5.jpg">
+        <p>🤍 رغم كنت مريض بس مكسرتش بخاطري وطلعنا </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo6.jpeg">
+        <p>🤍 وخليتنا نختمو شهر العسل بي سفرة العمر 
+        </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo7.jpg">
+        <p>🤍 كتفك والسنده عليه اماني </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo8.jpg">
+        <p>🤍فعلا الله قر عيني بي شخص يشبهني </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo9.jpg">
+        <p>🤍 ماتشي ماتشي تاني </p>
+    </div>
+
+    <div class="memory">
+        <img src="photo10.jpg">
+        <p>🤍 تاخدلي في الورد لان عارف حبي ليه </p>
+    </div>
+
+    <!-- العداد -->
+    <div class="counter-box">
+        <h3>⏳ مع بعض من تاريخ</h3>
+        <div class="counter">
+            <div><span id="days">0</span>يوم</div>
+            <div><span id="months">0</span>شهر</div>
+            <div><span id="years">0</span>سنة</div>
+        </div>
+    </div>
+
+    <!-- رسالة -->
+    <div class="message-box">
+        <h3>💌  رسالة ليك ياحبيب العمر </h3>
+        <p>
+            🤍 وجودك في حياتي حياه مش هنقدر نوصف قداش اني نحبك وقداش انت تسعد فيا لا كلام يعبر 
+            ولا شعور يوصف احساسي وانت معاي , كنت دائما خايفه من فكرة الزواج بس انت قدرت تخليني 
+            منخافش حببتني فالحياه وفيك ربي يدومك ليا ومايحرمني منك وربي يرزقنا الذرية الصالحة 
+             يارب 🤍🤍
+        </p>
+    </div>
+
+</div>
+
+<script>
+const correctPass = "0000";
+const music = document.getElementById("music");
+
+/* غيري التاريخ هنا */
+const startDate = new Date("2024-08-30");
+
+function checkPassword() {
+    if (password.value === correctPass) {
+        login.style.display = "none";
+        content.style.display = "block";
+        music.play();
+        startHearts();
+        calcTime();
+    } else {
+        alert("الرمز غير صحيح");
+    }
+}
+
+function toggleMusic() {
+    music.paused ? music.play() : music.pause();
+}
+function rewind() { music.currentTime -= 10; }
+function forward() { music.currentTime += 10; }
+
+/* العداد */
+function calcTime() {
+    const now = new Date();
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+
+    if (days < 0) {
+        months--;
+        days += 30;
+    }
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("months").innerText = months;
+    document.getElementById("years").innerText = years;
+}
+
+/* القلوب */
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "🤍";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }, 500);
+}
+</script>
+
+</body>
+</html>
